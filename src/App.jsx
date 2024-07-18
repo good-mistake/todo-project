@@ -70,17 +70,20 @@ const App = () => {
       handleAddItem();
     }
   };
-  const handleDragStart = (event, index) => {
-    event.dataTransfer.setData("text/plain", index);
+  const handleDragStart = (event, id) => {
+    event.dataTransfer.setData("text/plain", id);
   };
 
-  const handleDrop = (event, index) => {
+  const handleDrop = (event, id) => {
     event.preventDefault();
-    const draggedIndex = event.dataTransfer.getData("text");
-    if (draggedIndex !== index.toString()) {
+    const draggedId = event.dataTransfer.getData("text");
+    if (draggedId !== id) {
       const newItems = [...items];
-      const [draggedItem] = newItems.splice(draggedIndex, 1);
-      newItems.splice(index, 0, draggedItem);
+      const draggedIndex = newItems.findIndex((item) => item.id === draggedId);
+      const dropIndex = newItems.findIndex((item) => item.id === id);
+      const draggedItem = newItems[draggedIndex];
+      newItems[draggedIndex] = newItems[dropIndex];
+      newItems[dropIndex] = draggedItem;
       setItems(newItems);
     }
   };
