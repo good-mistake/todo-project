@@ -152,8 +152,12 @@ ul::after {
   flex-shrink: 0;
 }
 .container li input:hover,
-.container li:hover {
+.container li:hover,
+li button:hover {
   cursor: url(http://www.rw-designer.com/cursor-extern.php?id=20739), pointer !important;
+}
+li button:hover {
+  color: #181824;
 }
 .container li input:hover::before {
   content: "";
@@ -214,10 +218,7 @@ li > div,
   color: #9e9d9d;
   font-weight: 700;
 }
-li button:hover {
-  color: #181824;
-  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=20739), auto !important;
-}
+
 .completed {
   text-decoration: line-through;
   color: #afafaf;
